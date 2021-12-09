@@ -37,6 +37,7 @@ export const updatePost = async (req, res) => {
 }
 
 
+
 export const deletePost = async (req, res) => {
     const { id } = req.params;
 
@@ -109,4 +110,22 @@ export const deleteComment = async (req, res) => {
     //const updatedComment = await PostBody.findByIdAndUpdate(_id, { ...post, _id}, { new: true })
 
     res.json(user);
+}
+
+
+export const updateDate = async (req, res) => {
+    const { id: _id } = req.params;
+    const {last} = req.body;
+    const {streak} = req.body;
+
+    const user = await PostBody.findById(_id)
+
+    user.streak = streak
+    user.last = last
+
+    user.save()
+
+    if(!mongoose.Types.ObjectId.isValid(_id)) return res.status(404).send('No post with that ID');
+    
+    res.json(updatedPost);
 }

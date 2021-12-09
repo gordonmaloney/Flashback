@@ -86,3 +86,16 @@ export const addComment = (id, newPost) => async (dispatch) => {
     console.log(error);
   }
 };
+
+export const updateDate = (id, newDate) => async (dispatch) => {
+  try {
+    console.log("updating last studied date...", id, newDate)
+    
+    const { data } = await api.updateDate(id, newDate);
+
+    dispatch({ type: UPDATE, payload: data });
+    
+  } catch (error) {
+    console.log(error);
+  }
+};

@@ -8,4 +8,4 @@ And an 'admin' side, where an admin - for example a teacher - can see their stud
 
 For instance, a language teacher could push lists of vocabulary to their students' decks after each language class.
 
-Name kindly suggested from @NeRegretteRien on Twitter.
+Name kindly suggested by @NeRegretteRien on Twitter.

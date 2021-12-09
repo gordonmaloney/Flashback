@@ -25,7 +25,7 @@ export const UserHome = () => {
     <div>
       {user ? (
         <>
-          Welcome {user.name}!
+          Welcome {user.name}! Your current streak is: {user.streak}.
           <UserCards user={user} />
           <UserFlashcard user={user} />
           <UserAddCard user={user} />

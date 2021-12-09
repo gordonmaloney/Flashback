@@ -1,9 +1,18 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { updateComment, deleteComment } from "../../actions/posts";
+import { updatePost } from "../../actions/posts";
 
 export const UserFlashcard = ({ user }) => {
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (new Date(user.last) <= new Date().setDate(new Date().getDate() - 2)) {
+      alert("You lost your streak! 😭")
+      const newDate = { streak: 0, last: new Date().valueOf() };
+      dispatch(updatePost(user._id, newDate));
+    } 
+  }, [])
 
   const [index, setIndex] = useState(0);
   const [answer, setAnswer] = useState(false);
@@ -13,7 +22,6 @@ export const UserFlashcard = ({ user }) => {
   );
 
   const CARD = userCards[index];
-  console.log(CARD);
 
   const handlePrev = () => {
     if (index == 0) {
@@ -33,6 +41,14 @@ export const UserFlashcard = ({ user }) => {
 
   const handleUpdate = (id, commentId, updatedPost) => {
     dispatch(updateComment(id, commentId, updatedPost));
+
+    if (new Date(user.last) == new Date().setDate(new Date().getDate() - 1)) {
+      const newDate = { streak: user.streak + 1, last: new Date().valueOf() };
+      dispatch(updatePost(id, newDate));
+    } else {
+      const newDate = { streak: 1, last: new Date().valueOf() };
+      dispatch(updatePost(id, newDate));
+    }
   };
 
   const handleDelete = (id, commentId) => {
@@ -177,9 +193,7 @@ export const UserFlashcard = ({ user }) => {
                   Delete
                 </button>
               </td>
-              <td>
-                  Edit
-              </td>
+              <td>Edit</td>
             </tr>
           ))}
           <br />
