@@ -1,4 +1,4 @@
-Flashback is a flashcard app, built using the MERN stack.
+Flashback is a MERN, spaced-repition flashcard app, designed with teachers in mind.
 
 It uses a spaced repetition system, similar to programs like Anki, to optimise retention.
 
