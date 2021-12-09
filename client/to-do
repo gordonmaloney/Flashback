@@ -1,0 +1,20 @@
+user side:
+    display streak 
+    edit card option
+
+admin side:
+    edit card option
+    secure log in
+    bulk add
+
+user side:
+    //add new card
+    //delete card
+    //log in function
+    //import and convert from comhradh
+
+admin side:
+    //login
+    //add students 
+    //view students 
+    //add cards to students 

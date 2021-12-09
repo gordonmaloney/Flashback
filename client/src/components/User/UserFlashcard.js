@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { updateComment } from "../../actions/posts";
+import { updateComment, deleteComment } from "../../actions/posts";
 
 export const UserFlashcard = ({ user }) => {
   const dispatch = useDispatch();
@@ -33,6 +33,10 @@ export const UserFlashcard = ({ user }) => {
 
   const handleUpdate = (id, commentId, updatedPost) => {
     dispatch(updateComment(id, commentId, updatedPost));
+  };
+
+  const handleDelete = (id, commentId) => {
+    dispatch(deleteComment(id, commentId));
   };
 
   return (
@@ -153,6 +157,7 @@ export const UserFlashcard = ({ user }) => {
             <th>Delay</th>
             <th>Reviews</th>
             <th>Delete</th>
+            <th>Edit</th>
           </tr>
           <span className="tableHr">All words:</span>
           <br />
@@ -163,7 +168,18 @@ export const UserFlashcard = ({ user }) => {
               <td>{new Date(card.date).toLocaleDateString()}</td>
               <td>{card.delay}</td>
               <td>{card.reviews}</td>
-              <td>delete...</td>
+              <td>
+                <button
+                  onClick={() => {
+                    handleDelete(user._id, card._id);
+                  }}
+                >
+                  Delete
+                </button>
+              </td>
+              <td>
+                  Edit
+              </td>
             </tr>
           ))}
           <br />

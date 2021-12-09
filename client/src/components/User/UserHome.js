@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { getPosts } from "../../actions/posts";
 import { UserCards } from "./UserCards";
 import { UserFlashcard } from "./UserFlashcard";
+import { UserAddCard } from "./UserAddCard";
 
 export const UserHome = () => {
   const dispatch = useDispatch();
@@ -27,6 +28,7 @@ export const UserHome = () => {
           Welcome {user.name}!
           <UserCards user={user} />
           <UserFlashcard user={user} />
+          <UserAddCard user={user} />
         </>
       ) : (
         "User not found..."

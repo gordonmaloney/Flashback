@@ -1,5 +1,5 @@
 import * as api from "../api";
-import { FETCH, CREATE, UPDATE, DELETE } from './ActionTypes'
+import { FETCH, CREATE, UPDATE, DELETE, ADDCARD } from './ActionTypes'
 
 
 export const getPosts = () => async (dispatch) => {
@@ -67,6 +67,20 @@ export const deleteComment = (id, commentId) => async (dispatch) => {
     const { data } = await api.deleteComment(id, commentId);
 
     dispatch({ type: UPDATE, payload: data });
+    
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+
+export const addComment = (id, newPost) => async (dispatch) => {
+  try {
+    console.log("adding card...", id, newPost)
+    
+    const { data } = await api.addComment(id, newPost);
+
+    dispatch({ type: ADDCARD, payload: data });
     
   } catch (error) {
     console.log(error);
