@@ -6,8 +6,12 @@ import Drawer from "@mui/material/Drawer";
 import ArrowLeftIcon from "@mui/icons-material/ArrowLeft";
 import Box from "@mui/material/Box";
 import { Paper } from "@mui/material";
+import { MenuItem } from "./SubComponents/MenuItem";
+import { useHistory } from "react-router-dom";
 
 export const Header = () => {
+  const history = useHistory();
+
   const [localUser, setLocalUser] = useState();
 
   useEffect(() => {
@@ -45,12 +49,31 @@ export const Header = () => {
         PaperProps={{
           sx: {
             backgroundColor: "#B9CCDA",
-          }
+          },
         }}
       >
-        <Box sx={{ width: 250 }}>
+        <Box sx={{ width: 300 }}>
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
 
+          <div onClick={() => { setOpen(false); history.push("/study"); }} >
+            <MenuItem title="Study" />
+          </div>
 
+          <div onClick={() => { setOpen(false); history.push("/stats"); }} >
+            <MenuItem title="Stats" />
+          </div>
+
+          <div onClick={() => { setOpen(false); history.push("/addcards"); }} >
+            <MenuItem title="Add Cards" />
+          </div>
+
+          <div onClick={() => { setOpen(false); history.push("/logout"); }} >
+            <MenuItem title="Log out" />
+          </div>
 
         </Box>
       </Drawer>
