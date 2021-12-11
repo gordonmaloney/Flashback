@@ -21,6 +21,10 @@ export const UserHome = () => {
     setUser(users.filter((user) => user.code == code)[0]);
   });
 
+  useEffect(() => {
+    user && localStorage.setItem("profile", JSON.stringify({ username: user.name, code: user.code, id: user._id }))
+  }, [user])
+
   return (
     <div>
       {user ? (

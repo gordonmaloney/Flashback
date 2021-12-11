@@ -12,6 +12,7 @@ export const UserLogin = () => {
             <input onChange={(e) => setCode(e.target.value)} />
             <br />
             <button onClick={() => {history.push(`/user/${code}`)}}>Submit</button>
+
         </div>
     )
 }

@@ -1,5 +1,4 @@
 user side:
-    display streak 
     edit card option
 
 admin side:
@@ -7,7 +6,17 @@ admin side:
     secure log in
     bulk add
 
+UX:
+    design
+
+
+
+//DONE
+//calculate streak, tweak schema to include last review date
+//increment streak if dates match, scrap if more than 2 days since studying
+
 user side:
+    //display streak 
     //add new card
     //delete card
     //log in function

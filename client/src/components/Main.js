@@ -5,11 +5,12 @@ import { UserLogin } from "./User/UserLogin";
 import { UserHome } from "./User/UserHome";
 import { Home } from './Home'
 import { AdminLogin } from "./Admin/AdminLogin";
-
+import { Header } from "./Header";
 export const Main = () => {
   return (
     <div>
       <BrowserRouter>
+      <Header />
         <Switch>
           <Route exact path="/">
             <Home />
