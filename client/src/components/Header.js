@@ -8,17 +8,24 @@ import Box from "@mui/material/Box";
 import { Paper } from "@mui/material";
 import { MenuItem } from "./SubComponents/MenuItem";
 import { useHistory } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 export const Header = () => {
+  const location = useLocation();
   const history = useHistory();
 
   const [localUser, setLocalUser] = useState();
 
   useEffect(() => {
     setLocalUser(JSON.parse(localStorage.getItem("profile")));
-  }, []);
+  }, [localStorage, location]);
 
   const [open, setOpen] = useState(false);
+
+  const handleLogOut = () => {
+    localStorage.clear();
+    history.push("../");
+  };
 
   return (
     <>
@@ -26,19 +33,41 @@ export const Header = () => {
         {localUser && (
           <>
             <Fab
-              sx={{ zIndex: 3, backgroundColor: "white", color: "#261420" }}
+              sx={{
+                zIndex: 3,
+                backgroundColor: "white",
+                fontWeight: 600,
+                color: "#261420",
+              }}
               className="menufab"
               onClick={() => setOpen(!open)}
             >
-              {!open ? <MenuIcon /> : <MenuOpenIcon />}
+              {!open ? (
+                <MenuIcon
+                  fontSize="large"
+                  style={{ transform: "scale(1.3)" }}
+                />
+              ) : (
+                <MenuOpenIcon
+                  fontSize="large"
+                  style={{ transform: "scale(1.3)" }}
+                />
+              )}
             </Fab>
           </>
         )}
 
-        <h1>
-          <ArrowLeftIcon />
-          FlashBack
-        </h1>
+        {localUser ? (
+          <h1 onClick={() => history.push("../home")}>
+            <ArrowLeftIcon />
+            FlashBack
+          </h1>
+        ) : (
+          <h1 onClick={() => history.push("../")}>
+            <ArrowLeftIcon />
+            FlashBack
+          </h1>
+        )}
       </div>
 
       <Drawer
@@ -59,22 +88,41 @@ export const Header = () => {
           <br />
           <br />
 
-          <div onClick={() => { setOpen(false); history.push("/study"); }} >
+          <div
+            onClick={() => {
+              setOpen(false);
+              history.push("/study");
+            }}
+          >
             <MenuItem title="Study" />
           </div>
 
-          <div onClick={() => { setOpen(false); history.push("/stats"); }} >
+          <div
+            onClick={() => {
+              setOpen(false);
+              history.push("/stats");
+            }}
+          >
             <MenuItem title="Stats" />
           </div>
 
-          <div onClick={() => { setOpen(false); history.push("/addcards"); }} >
+          <div
+            onClick={() => {
+              setOpen(false);
+              history.push("/add");
+            }}
+          >
             <MenuItem title="Add Cards" />
           </div>
 
-          <div onClick={() => { setOpen(false); history.push("/logout"); }} >
+          <div
+            onClick={() => {
+              setOpen(false);
+              handleLogOut();
+            }}
+          >
             <MenuItem title="Log out" />
           </div>
-
         </Box>
       </Drawer>
     </>

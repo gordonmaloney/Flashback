@@ -13,7 +13,7 @@ import {
 
 import { FBCard } from "../SubComponents/FBCard";
 
-export const UserFlashcard = ({ user }) => {
+export const Study = () => {
   const location = useLocation();
   const dispatch = useDispatch();
   const history = useHistory();
@@ -22,7 +22,25 @@ export const UserFlashcard = ({ user }) => {
 
   const [answer, setAnswer] = useState(false);
 
-  // const [userCards, setUserCards] = useState([]);
+
+    //Find User
+    const localUser = JSON.parse(localStorage.getItem("profile"));
+
+    useEffect(() => {
+      dispatch(getPosts());
+    }, []);
+  
+    const users = useSelector((state) => state.posts);
+    const [user, setUser] = useState();
+  
+    useEffect(() => {
+      setUser(users.filter((user) => user.code == localUser?.code)[0]);
+    }, [users, localUser]);
+    //Found user
+
+    
+  if (user) {
+
 
   var userCards = [];
 
@@ -102,6 +120,18 @@ export const UserFlashcard = ({ user }) => {
   if (CARD) {
     return (
       <div>
+          
+     <br />
+     <br />
+     <br />
+     <br />
+     <br />
+     <br />
+     <br />
+     <br />
+     <br />
+     <br />
+     <br />
         <center>
           <FBCard
             buttons={[
@@ -113,19 +143,20 @@ export const UserFlashcard = ({ user }) => {
             title="Studying"
             body={
               <>
-                {CARD.l2}
+              
+              <br/>
+                <h3>{CARD.l2}</h3>
 
                 {answer ? (
                   <>
+                  <div style={{height: "10px"}}>
                     <hr style={{ width: "80%" }} />
-                    {CARD.l1}
+                    <h3 style={{marginBottom: "0px"}}>{CARD.l1}</h3>
+                    </div>
                   </>
                 ) : (
                   <>
-                    {" "}
-                    <br />
-                    <br />
-                    <br />
+                  <div style={{height: "10px"}}></div>
                   </>
                 )}
               </>
@@ -144,4 +175,6 @@ export const UserFlashcard = ({ user }) => {
       </>
     );
   }
-};
+} else {return (<>egwr</>)}
+
+}

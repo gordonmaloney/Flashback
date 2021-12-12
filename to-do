@@ -1,6 +1,8 @@
 user side:
     edit card option
 
+    move auth stuff to redux somehow
+
 admin side:
     edit card option
     secure log in

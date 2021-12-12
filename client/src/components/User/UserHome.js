@@ -1,14 +1,21 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useHistory } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { getPosts } from "../../actions/posts";
-import { UserCards } from "./UserCards";
-import { UserFlashcard } from "./UserFlashcard";
-import { UserAddCard } from "./UserAddCard";
+import { FBCard } from "../SubComponents/FBCard";
+import {UserFlashcard} from './UserFlashcard'
+import { UserIntro } from "./UserIntro";
+import { UserStats } from "./UserStats";
+
 
 export const UserHome = () => {
+  const location = useLocation()
   const dispatch = useDispatch();
-  const { code } = useParams();
+  const history = useHistory();
+
+
+  const [localUser, setLocalUser] = useState();
 
   useEffect(() => {
     dispatch(getPosts());
@@ -18,24 +25,39 @@ export const UserHome = () => {
   const [user, setUser] = useState();
 
   useEffect(() => {
-    setUser(users.filter((user) => user.code == code)[0]);
-  });
+    setLocalUser(JSON.parse(localStorage.getItem("profile")));
+  }, [localStorage]);
+
 
   useEffect(() => {
-    user && localStorage.setItem("profile", JSON.stringify({ username: user.name, code: user.code, id: user._id }))
-  }, [user])
+    setUser(users.filter((user) => user.code == localUser?.code)[0]);
+  }, [users, location, localUser]);
+
+
 
   return (
     <div>
+     <br />
+     <br />
+     <br />
+     <br />
+     <br />
+     <br />
+     <br />
+     <br />
+     <br />
+     <br />
+     <br />
+
       {user ? (
         <>
-          Welcome {user.name}! Your current streak is: {user.streak}.
-          <UserCards user={user} />
-          <UserFlashcard user={user} />
-          <UserAddCard user={user} />
+        
+          <UserIntro user={user}/>
+
         </>
+        
       ) : (
-        "User not found..."
+<center><h1>Loading...</h1></center>
       )}
     </div>
   );

@@ -1,31 +1,21 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { getPosts } from "../actions/posts";
-import { useParams } from "react-router-dom";
-import { useLocation } from "react-router-dom";
-
-import { UserHome } from "./User/UserHome";
-import { UserLogin } from "./User/UserLogin";
-import { AdminLink } from "./Admin/AdminLink";
-import { FBCard } from "./SubComponents/FBCard";
+import { addComment } from "../../actions/posts";
+import { useEffect } from "react";
+import { FBCard } from "../SubComponents/FBCard";
 import { useHistory } from "react-router-dom";
 import FormControl from "@mui/material/FormControl";
-
+import { getPosts } from "../../actions/posts";
 import TextField from "@mui/material/TextField";
 import { InputLabel, Input } from "@mui/material";
 
-export const Home = () => {
-  const location = useLocation()
-  const dispatch = useDispatch();
+export const AddCard = () => {
   const history = useHistory();
 
+  const dispatch = useDispatch();
 
-  const [localUser, setLocalUser] = useState();
-
-  useEffect(() => {
-    setLocalUser(JSON.parse(localStorage.getItem("profile")));
-    setUser(JSON.parse(localStorage.getItem("profile")));
-  }, [localStorage]);
+  //Find User
+  const localUser = JSON.parse(localStorage.getItem("profile"));
 
   useEffect(() => {
     dispatch(getPosts());
@@ -36,40 +26,44 @@ export const Home = () => {
 
   useEffect(() => {
     setUser(users.filter((user) => user.code == localUser?.code)[0]);
-  }, [users, location, localUser]);
+  }, [users, localUser]);
+  //Found user
 
+  const [newCard, setNewCard] = useState({
+    l1: "",
+    l2: "",
+    delay: 0,
+    reviews: 0,
+    date: new Date().valueOf(),
+  });
 
-  const [loginForm, setLoginForm] = useState({username: "", code: ""})
+  console.log(newCard);
 
-  const submitBtn = () => {   
-    localStorage.setItem(
-      "profile",
-      JSON.stringify({ name: loginForm.username, code: loginForm.code }))
-
-      history.push('/home')
-  }
-
-
+  const handleUpdate = (id, newCard) => {
+    dispatch(addComment(id, newCard));
+  };
 
   return (
     <div>
-     <br />
-     <br />
-     <br />
-     <br />
-     <br />
-     <br />
-     <br />
-     <br />
-     <br />
-     <br />
-     <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+
       <center>
-        
-        {!user ?
         <FBCard
-          title="Log in"
-          buttons={[{text: "Submit", submit: submitBtn},]}
+          title="Add Card"
+          buttons={[
+            { text: "Cancel", submit: () => history.push("../home") },
+            { text: "Save", submit: () => handleUpdate(user._id, newCard) },
+          ]}
           body={
             <>
               <FormControl
@@ -82,10 +76,10 @@ export const Home = () => {
                     marginBottom: "5px",
                   }}
                 >
-                  Username
+                  Front side
                 </h4>
                 <Input
-                  placeholder="Username..."
+                  placeholder="Front..."
                   disableUnderline="true"
                   sx={{
                     borderRadius: "5px",
@@ -93,17 +87,18 @@ export const Home = () => {
                     backgroundColor: "#B9CCDA",
                     color: "#261420",
                   }}
-                  onChange={(e) => setLoginForm({...loginForm, username: e.target.value})}
+                  onChange={(e) =>
+                    setNewCard({ ...newCard, l1: e.target.value })
+                  }
                 ></Input>
               </FormControl>
 
               <FormControl
-                sx={{ width: "80%", marginLeft: "auto", marginRight: "auto" }}
+                sx={{ width: "80%", marginLeft: "auto", marginRight: "auto", marginBottom: "-40px" }}
               >
-                <h4 style={{ textAlign: "left", marginBottom: "5px" }}>Code</h4>
+                <h4 style={{ textAlign: "left", marginBottom: "5px" }}>Back</h4>
                 <Input
-                
-                placeholder="Code..."
+                  placeholder="Back..."
                   disableUnderline="true"
                   sx={{
                     borderRadius: "5px",
@@ -111,15 +106,14 @@ export const Home = () => {
                     backgroundColor: "#B9CCDA",
                     color: "#261420",
                   }}
-                  onChange={(e) => setLoginForm({...loginForm, code: e.target.value})}
+                  onChange={(e) =>
+                    setNewCard({ ...newCard, l2: e.target.value })
+                  }
                 ></Input>
               </FormControl>
             </>
           }
         />
-        :
-        submitBtn()
-        }
       </center>
     </div>
   );
