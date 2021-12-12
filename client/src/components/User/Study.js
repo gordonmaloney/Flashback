@@ -52,12 +52,6 @@ export const Study = () => {
     (card) => card.date <= new Date().valueOf() && userCards.push(card)
   );
 
-  /*
-  user.cards.map(
-    (card) => userCards.push(card)
-  );
-  */
-
   var CARD = userCards[index];
 
   const handlePrev = () => {
@@ -76,14 +70,32 @@ export const Study = () => {
     }
   };
 
+
+
   const handleUpdate = (id, commentId, updatedPost) => {
+
+    let today = new Date( new Date().setHours(0,0,0,1) )
+
+    console.log("last", user.last)
+
+    console.log("-1", new Date(today).setDate(new Date().getDate() - 1))
+
+    console.log(user.last == new Date(today).setDate(new Date().getDate() - 1))
+
     dispatch(updateComment(id, commentId, updatedPost));
 
-    if (new Date(user.last) == new Date().setDate(new Date().getDate() - 1)) {
-      const newDate = { streak: user.streak + 1, last: new Date().valueOf() };
+    if (user.last == new Date(today).setDate(new Date().getDate() - 1)) {
+      const newDate = { streak: user.streak + 1, last: (new Date()).setHours(0,0,1).valueOf() };
       dispatch(updatePost(id, newDate));
+
+    } else if (user.last < new Date(today).setDate(new Date().getDate() - 1)) {
+      const newDate = { streak: 1, last: (new Date()).setHours(0,0,1).valueOf() };
+      dispatch(updatePost(id, newDate));
+
     } else {
-      const newDate = { streak: 1, last: new Date().valueOf() };
+      const newDate = { streak: user.streak, last: (new Date()).setHours(0,0,0,1).valueOf() };
+
+
       dispatch(updatePost(id, newDate));
     }
   };
@@ -93,7 +105,7 @@ export const Study = () => {
   };
 
   const handleWrong = (CARD) => {
-    CARD.date = new Date().valueOf();
+    CARD.date = (new Date()).setHours(0,0,0,1).valueOf();
     CARD.delay = 0;
     CARD.reviews++;
 
@@ -102,9 +114,10 @@ export const Study = () => {
   };
 
   const handleCorrect = (CARD) => {
-    CARD.date = new Date().setDate(
+    let newDate = new Date().setDate(
       new Date().getDate() + (parseInt(CARD?.delay) + 1) * 2
     );
+    CARD.date = (new Date(newDate)).setHours(0,0,0,1)
     CARD.delay = (parseInt(CARD.delay) + 1) * 2;
     CARD.reviews++;
     handleUpdate(user._id, CARD._id, CARD);
@@ -112,9 +125,10 @@ export const Study = () => {
   };
 
   const handleEasy = (CARD) => {
-    CARD.date = new Date().setDate(
-      new Date().getDate() + (parseInt(CARD.delay) + 1) * 3
+    let newDate = new Date().setDate(
+      new Date().getDate() + (parseInt(CARD?.delay) + 1) * 3
     );
+    CARD.date = (new Date(newDate)).setHours(0,0,0,1);
     CARD.delay = (parseInt(CARD.delay) + 1) * 3;
     CARD.reviews++;
     handleUpdate(user._id, CARD._id, CARD);
@@ -181,6 +195,15 @@ export const Study = () => {
       <>
         {index > 0 && index > userCards.length - 1 && setIndex(index - 1)}
         <center>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
           <h1>You don't have any cards to review!</h1>
         </center>
       </>

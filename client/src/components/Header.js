@@ -10,15 +10,15 @@ import { MenuItem } from "./SubComponents/MenuItem";
 import { useHistory } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 
+
+import { useSelector } from "react-redux";
+import { getPosts } from "../actions/posts";
+import { useDispatch } from "react-redux";
+
 export const Header = () => {
+  const dispatch = useDispatch();
   const location = useLocation();
   const history = useHistory();
-
-  const [localUser, setLocalUser] = useState();
-
-  useEffect(() => {
-    setLocalUser(JSON.parse(localStorage.getItem("profile")));
-  }, [localStorage, location]);
 
   const [open, setOpen] = useState(false);
 
@@ -27,6 +27,22 @@ export const Header = () => {
     history.push("../");
   };
 
+    //Find User
+    const localUser = JSON.parse(localStorage.getItem("profile"));
+
+    useEffect(() => {
+      dispatch(getPosts());
+    }, []);
+  
+    const users = useSelector((state) => state.posts);
+    const [user, setUser] = useState();
+  
+    useEffect(() => {
+      setUser(users.filter((user) => user.code == localUser?.code)[0]);
+    }, [users, localUser]);
+    //Found user
+
+    
   return (
     <>
       <div className="header">

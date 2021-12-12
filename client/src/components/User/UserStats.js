@@ -86,7 +86,7 @@ export const UserStats = () => {
               <tr>
               <td>{card.front}</td>
               <td>{card.back}</td>
-                <td>{new Date(card.date).toLocaleDateString()}</td>
+                <td>{new Date(card.date).toISOString()}</td>
                 <td>{card.delay}</td>
                 <td>{card.reviews}</td>
               </tr>
