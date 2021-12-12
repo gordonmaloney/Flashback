@@ -43,78 +43,89 @@ export const AddCard = () => {
     dispatch(addComment(id, newCard));
   };
 
-  return (
-    <div>
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
+  if (user) {
+    return (
+      <div>
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
 
-      <center>
-        <FBCard
-          title="Add Card"
-          buttons={[
-            { text: "Cancel", submit: () => history.push("../home") },
-            { text: "Save", submit: () => handleUpdate(user._id, newCard) },
-          ]}
-          body={
-            <>
-              <FormControl
-                sx={{ width: "80%", marginLeft: "auto", marginRight: "auto" }}
-              >
-                <h4
-                  style={{
-                    textAlign: "left",
-                    marginTop: "10px",
-                    marginBottom: "5px",
+        <center>
+          <FBCard
+            title="Add Card"
+            buttons={[
+              { text: "Cancel", submit: () => history.push("../home") },
+              { text: "Save", submit: () => handleUpdate(user._id, newCard) },
+            ]}
+            body={
+              <>
+                <FormControl
+                  sx={{ width: "80%", marginLeft: "auto", marginRight: "auto" }}
+                >
+                  <h4
+                    style={{
+                      textAlign: "left",
+                      marginTop: "10px",
+                      marginBottom: "5px",
+                    }}
+                  >
+                    Front side
+                  </h4>
+                  <Input
+                    placeholder="Front..."
+                    disableUnderline="true"
+                    sx={{
+                      borderRadius: "5px",
+                      paddingLeft: "10px",
+                      backgroundColor: "#B9CCDA",
+                      color: "#261420",
+                    }}
+                    onChange={(e) =>
+                      setNewCard({ ...newCard, l1: e.target.value })
+                    }
+                  ></Input>
+                </FormControl>
+
+                <FormControl
+                  sx={{
+                    width: "80%",
+                    marginLeft: "auto",
+                    marginRight: "auto",
+                    marginBottom: "-40px",
                   }}
                 >
-                  Front side
-                </h4>
-                <Input
-                  placeholder="Front..."
-                  disableUnderline="true"
-                  sx={{
-                    borderRadius: "5px",
-                    paddingLeft: "10px",
-                    backgroundColor: "#B9CCDA",
-                    color: "#261420",
-                  }}
-                  onChange={(e) =>
-                    setNewCard({ ...newCard, l1: e.target.value })
-                  }
-                ></Input>
-              </FormControl>
-
-              <FormControl
-                sx={{ width: "80%", marginLeft: "auto", marginRight: "auto", marginBottom: "-40px" }}
-              >
-                <h4 style={{ textAlign: "left", marginBottom: "5px" }}>Back</h4>
-                <Input
-                  placeholder="Back..."
-                  disableUnderline="true"
-                  sx={{
-                    borderRadius: "5px",
-                    paddingLeft: "10px",
-                    backgroundColor: "#B9CCDA",
-                    color: "#261420",
-                  }}
-                  onChange={(e) =>
-                    setNewCard({ ...newCard, l2: e.target.value })
-                  }
-                ></Input>
-              </FormControl>
-            </>
-          }
-        />
-      </center>
-    </div>
-  );
+                  <h4 style={{ textAlign: "left", marginBottom: "5px" }}>
+                    Back
+                  </h4>
+                  <Input
+                    placeholder="Back..."
+                    disableUnderline="true"
+                    sx={{
+                      borderRadius: "5px",
+                      paddingLeft: "10px",
+                      backgroundColor: "#B9CCDA",
+                      color: "#261420",
+                    }}
+                    onChange={(e) =>
+                      setNewCard({ ...newCard, l2: e.target.value })
+                    }
+                  ></Input>
+                </FormControl>
+              </>
+            }
+          />
+        </center>
+      </div>
+    );
+  } else {
+    return <></>;
+  }
 };

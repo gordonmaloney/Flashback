@@ -57,7 +57,8 @@ export const UserHome = () => {
         </>
         
       ) : (
-<center><h1>Loading...</h1></center>
+<center><h1>Something has gone wrong... <br/><br/>
+Are you sure you got your code right?</h1></center>
       )}
     </div>
   );

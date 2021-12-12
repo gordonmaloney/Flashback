@@ -324,7 +324,7 @@ export const FBCard = ({ title, body, buttons }) => {
         borderRadius: "8px",
         border: "2px solid darkgrey",
         height: "auto",
-        zIndex: 3,
+        zIndex: 0,
         padding: "0px",
         margin: "0px",
         backgroundColor: "rgba(255,255,255,0.7)",

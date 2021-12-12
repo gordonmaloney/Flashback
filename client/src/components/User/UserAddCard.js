@@ -20,6 +20,7 @@ export const UserAddCard = ({ user }) => {
     dispatch(addComment(id, newCard));
   };
 
+  if (user) {
   return (
     <div>
         <h1>Add new card</h1>
@@ -36,4 +37,9 @@ export const UserAddCard = ({ user }) => {
       <button onClick={() => handleUpdate(user._id, newCard)}>Update</button>
     </div>
   );
+  } else {
+    return (
+      <>...</>
+    )
+  }
 };
