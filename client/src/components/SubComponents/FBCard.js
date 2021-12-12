@@ -15,7 +15,7 @@ export const FBCard = ({ title, body, buttons }) => {
           marginLeft: "-0.2px",
           marginTop: "-0.5px",
           paddingTop: "3px",
-          width: "401px",
+          width: "100.2%",
           borderRadius: "6px 6px 0 0",
           backgroundColor: "#B9CCDA",
         }}
@@ -45,7 +45,7 @@ export const FBCard = ({ title, body, buttons }) => {
           padding: "0px",
           margin: "0px",
           marginLeft: "-0.2px",
-          width: "401px",
+          width: "100.2%",
           borderRadius: "0 0 6px 6px",
           backgroundColor: "#B9CCDA",
 
@@ -80,7 +80,7 @@ export const FBCard = ({ title, body, buttons }) => {
             padding: "0px",
             margin: "0px",
             marginLeft: "-0.2px",
-            width: "401px",
+            width: "100.2%",
             borderRadius: "0 0 0 0",
             backgroundColor: "#B9CCDA",
 
@@ -110,7 +110,7 @@ export const FBCard = ({ title, body, buttons }) => {
             padding: "0px",
             margin: "0px",
             marginLeft: "-0.2px",
-            width: "401px",
+            width: "100.2%",
             borderRadius: "0 0 6px 6px",
             backgroundColor: "#B9CCDA",
 
@@ -143,7 +143,7 @@ export const FBCard = ({ title, body, buttons }) => {
           padding: "0px",
           margin: "0px",
           marginLeft: "-0.2px",
-          width: "401px",
+          width: "100.2%",
           borderRadius: "0 0 6px 6px",
           backgroundColor: "#B9CCDA",
 
@@ -222,7 +222,7 @@ export const FBCard = ({ title, body, buttons }) => {
         padding: "0px",
         margin: "0px",
         marginLeft: "-0.2px",
-        width: "401px",
+        width: "100.2%",
         borderRadius: "0 0 0 0",
         backgroundColor: "#B9CCDA",
 
@@ -250,7 +250,7 @@ export const FBCard = ({ title, body, buttons }) => {
           padding: "0px",
           margin: "0px",
           marginLeft: "-0.2px",
-          width: "401px",
+          width: "100.2%",
           borderRadius: "0 0 6px 6px",
           backgroundColor: "#B9CCDA",
 
@@ -321,6 +321,7 @@ export const FBCard = ({ title, body, buttons }) => {
     <div
       style={{
         width: "400px",
+        maxWidth: "90%",
         borderRadius: "8px",
         border: "2px solid darkgrey",
         height: "auto",
