@@ -60,8 +60,8 @@ export const UserStats = () => {
           <br />
           {user.cards.map((card) => (
             <tr>
-              <td>{card.l1}</td>
-              <td>{card.l2}</td>
+              <td>{card.front}</td>
+              <td>{card.back}</td>
               <td>{new Date(card.date).toLocaleDateString()}</td>
               <td>{card.delay}</td>
               <td>{card.reviews}</td>
@@ -84,8 +84,8 @@ export const UserStats = () => {
             .filter((card) => card.date <= new Date())
             .map((card) => (
               <tr>
-                <td>{card.l1}</td>
-                <td>{card.l2}</td>
+              <td>{card.front}</td>
+              <td>{card.back}</td>
                 <td>{new Date(card.date).toLocaleDateString()}</td>
                 <td>{card.delay}</td>
                 <td>{card.reviews}</td>

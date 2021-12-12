@@ -53,6 +53,12 @@ th,
   backdrop-filter: blur(2px);
 }
 
+.css-169ycje-MuiPaper-root-MuiSnackbarContent-root {
+  min-width: 80px !important;
+  max-width: 80px !important;
+}
+
+
 h1 {
   color: #261420;
 }

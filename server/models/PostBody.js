@@ -6,7 +6,7 @@ const postSchema = mongoose.Schema({
   code: String,
   last: { type: Number, default: 0 },
   cards: [
-    { l1: String, l2: String, date: Number, delay: Number, reviews: Number }
+    { front: String, back: String, date: Number, delay: Number, reviews: Number }
   ]
 });
 

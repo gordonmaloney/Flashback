@@ -12,6 +12,10 @@ import {
 } from "../../actions/posts";
 
 import { FBCard } from "../SubComponents/FBCard";
+import LocalFireDepartmentIcon from '@mui/icons-material/LocalFireDepartment';
+
+import Tooltip from '@mui/material/Tooltip';
+
 
 export const Study = () => {
   const location = useLocation();
@@ -121,8 +125,15 @@ export const Study = () => {
     return (
       <div>
           
+          <Tooltip title={<>Your streak is {user.streak} - nice!<br/>Can you make it to {user.streak + 1}?</>} placement="bottom">
+
+        <div style={{float: "right", opacity: "0.8", marginRight: "100px", marginTop: "150px", color: "#261420"}}>
+          <LocalFireDepartmentIcon style={{transform: "scale(2)", marginRight: "20px" }}/>
+          <h1 style={{display: "inline"}}>{user.streak}</h1>
+          </div>
+          </Tooltip>
      <br />
-     <br />
+
      <br />
      <br />
      <br />
@@ -145,13 +156,13 @@ export const Study = () => {
               <>
               
               <br/>
-                <h3>{CARD.l2}</h3>
+                <h3>{CARD.front}</h3>
 
                 {answer ? (
                   <>
                   <div style={{height: "10px"}}>
                     <hr style={{ width: "80%" }} />
-                    <h3 style={{marginBottom: "0px"}}>{CARD.l1}</h3>
+                    <h3 style={{marginBottom: "0px"}}>{CARD.back}</h3>
                     </div>
                   </>
                 ) : (

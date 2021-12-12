@@ -3,7 +3,6 @@ import { useSelector, useDispatch } from "react-redux";
 import { getPosts } from "../actions/posts";
 import { useParams } from "react-router-dom";
 import { useLocation } from "react-router-dom";
-
 import { UserHome } from "./User/UserHome";
 import { UserLogin } from "./User/UserLogin";
 import { AdminLink } from "./Admin/AdminLink";
@@ -111,6 +110,7 @@ export const Home = () => {
                     backgroundColor: "#B9CCDA",
                     color: "#261420",
                   }}
+                  onKeyPress={e => e.key == "Enter" && submitBtn()}
                   onChange={(e) => setLoginForm({...loginForm, code: e.target.value})}
                 ></Input>
               </FormControl>

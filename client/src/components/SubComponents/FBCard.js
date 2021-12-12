@@ -50,7 +50,7 @@ export const FBCard = ({ title, body, buttons }) => {
           backgroundColor: "#B9CCDA",
 
           position: "absolute",
-          bottom: 0,
+          bottom: -1,
         }}
       >
         <h1
@@ -85,7 +85,7 @@ export const FBCard = ({ title, body, buttons }) => {
             backgroundColor: "#B9CCDA",
 
             position: "absolute",
-            bottom: 54,
+            bottom: 51,
             borderBottom: "2px solid darkgrey"
           }}
         >
@@ -115,7 +115,7 @@ export const FBCard = ({ title, body, buttons }) => {
             backgroundColor: "#B9CCDA",
 
             position: "absolute",
-            bottom: 0,
+            bottom: -1,
           }}
         >
           <h1
@@ -227,7 +227,7 @@ export const FBCard = ({ title, body, buttons }) => {
         backgroundColor: "#B9CCDA",
 
         position: "absolute",
-        bottom: 54,
+        bottom: 55,
         borderBottom: "2px solid darkgrey"
       }}
     >
