@@ -9,9 +9,9 @@ import {
   getPosts,
   updateComment,
   deleteComment,
-} from "../../actions/posts";
+} from "../../../actions/posts";
 
-import { FBCard } from "../SubComponents/FBCard";
+import { FBCard } from "../../SubComponents/FBCard";
 
 export const UserFlashcard = ({ user }) => {
   const location = useLocation();

@@ -4,7 +4,6 @@ import { useLocation } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { getPosts } from "../../actions/posts";
 import { FBCard } from "../SubComponents/FBCard";
-import {UserFlashcard} from './UserFlashcard'
 import { UserIntro } from "./UserIntro";
 import { UserStats } from "./UserStats";
 

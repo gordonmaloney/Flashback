@@ -4,10 +4,10 @@ import { useHistory } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 
 import { useDispatch, useSelector } from "react-redux";
-import { getPosts, updateComment, deleteComment } from "../../actions/posts";
-import { updatePost } from "../../actions/posts";
+import { getPosts, updateComment, deleteComment } from "../../../actions/posts";
+import { updatePost } from "../../../actions/posts";
 
-import { FBCard } from "../SubComponents/FBCard";
+import { FBCard } from "../../SubComponents/FBCard";
 
 export const UserFlashcard = ({ user }) => {
   const location = useLocation();

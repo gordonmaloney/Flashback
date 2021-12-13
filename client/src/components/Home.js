@@ -1,11 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getPosts } from "../actions/posts";
-import { useParams } from "react-router-dom";
 import { useLocation } from "react-router-dom";
-import { UserHome } from "./User/UserHome";
-import { UserLogin } from "./User/UserLogin";
-import { AdminLink } from "./Admin/AdminLink";
 import { FBCard } from "./SubComponents/FBCard";
 import { useHistory } from "react-router-dom";
 import FormControl from "@mui/material/FormControl";

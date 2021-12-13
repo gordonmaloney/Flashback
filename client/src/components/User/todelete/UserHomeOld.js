@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { getPosts } from "../../actions/posts";
+import { getPosts } from "../../../actions/posts";
 import { UserCards } from "./UserCards";
 import { UserFlashcard } from "./UserFlashcard";
 import { UserAddCard } from "./UserAddCard";

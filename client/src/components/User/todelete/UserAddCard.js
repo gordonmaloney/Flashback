@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { addComment } from "../../actions/posts";
+import { addComment } from "../../../actions/posts";
 import { useEffect } from "react";
 
 export const UserAddCard = ({ user }) => {
