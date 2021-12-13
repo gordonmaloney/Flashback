@@ -78,11 +78,18 @@ export const updateComment = async (req, res) => {
 
 
     const user = await PostBody.findById(_id)
-    const card = user.cards.filter(reply => reply.id == commentId)[0]
+    const card = user.cards.filter(card => card._id == commentId)[0]
 
+    console.log(req.body)
+
+    if (req.body.date) {
     card.date = req.body.date
     card.delay = req.body.delay
     card.reviews = req.body.reviews
+    } else {
+        card.front = req.body.front
+        card.back = req.body.back
+    }
 
     user.save()
 
