@@ -114,11 +114,31 @@ export const Study = () => {
   };
 
   const handleCorrect = (CARD) => {
-    let newDate = new Date().setDate(
-      new Date().getDate() + (parseInt(CARD?.delay) + 1) * 2
-    );
+
+    console.log(parseInt(CARD.delay) == 0)
+
+    var newDate
+    var newDelay
+
+    if (parseInt(CARD.delay)== 0) {
+      newDate = new Date().setDate(
+        new Date().getDate() + (
+          + 1 ))
+
+      newDelay = 1
+    } else {
+      newDate = new Date().setDate(
+        new Date().getDate() + (
+          parseInt(CARD.delay) + 1) * 2 )
+
+      newDelay = (parseInt(CARD.delay) + 1) * 2
+    }
+
+    console.log(new Date(newDate))
+    
+
     CARD.date = (new Date(newDate)).setHours(0,0,0,1)
-    CARD.delay = (parseInt(CARD.delay) + 1) * 2;
+    CARD.delay = newDelay ;
     CARD.reviews++;
     handleUpdate(user._id, CARD._id, CARD);
     handleNext();
