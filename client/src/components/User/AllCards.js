@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
-
+import FBModal from "../SubComponents/FBModal";
 import { useHistory } from "react-router-dom";
 import { useLocation } from "react-router-dom";
+import { FormControl } from "@mui/material";
+import { Input } from "@mui/material";
 
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -38,11 +40,20 @@ export const AllCards = () => {
     dispatch(deleteComment(id, commentId));
   };
 
+
+  const [newCard, setNewCard] = useState({
+    front: "",
+    back: ""
+  });
+
+  
+  const handleEdit = (userId, commentId) => {
+    dispatch(updateComment(userId, commentId, newCard))
+  }
+
   if (user) {
     return (
       <>
-
-
         <center>
           <div className="allcards">
             <FBCardLarge
@@ -84,39 +95,155 @@ export const AllCards = () => {
                         </td>
                         <td>
                           <center>
-                          <div
-                            style={{
-                              borderRadius: "10px",
-                              backgroundColor: "#B9CCDA",
-                              cursor: "pointer",
-                              display: "inline",
-                              marginRight: "5px",
-                            }}
-                            onClick={() => {
-                              handleDelete(user._id, card._id);
-                            }}
-                          >
-                            <h3 style={{ display: "inline-block", margin: 0, padding: "10px" }}>
-                              Delete
-                            </h3>
-                          </div>
+                            <FBModal
+                              prompt={
+                                <div
+                                  style={{
+                                    borderRadius: "10px",
+                                    backgroundColor: "#B9CCDA",
+                                    cursor: "pointer",
+                                    display: "inline",
+                                    marginRight: "5px",
+                                  }}
+                                >
+                                  <h3
+                                    style={{
+                                      display: "inline-block",
+                                      margin: 0,
+                                      padding: "10px",
+                                    }}
+                                  >
+                                    Delete
+                                  </h3>
+                                </div>
+                              }
+                              title="Delete card"
+                              buttons={[
+                                {
+                                  text: "Delete",
+                                  submit: () =>
+                                    handleDelete(user._id, card._id),
+                                },
+                              ]}
+                              body={
+                                <center>
+                                  <h3>
+                                    Are you sure you want to delete this card?
+                                    This cannot be undone.
+                                  </h3>
+                                </center>
+                              }
+                            />
 
-                          <div
-                            style={{
-                              borderRadius: "10px",
-                              backgroundColor: "#B9CCDA",
-                              cursor: "pointer",
-                              display: "inline",
-                              marginLeft: "5px",
-                            }}
-                            onClick={() => {
-                              //edit
-                            }}
-                          >
-                            <h3 style={{ display: "inline-block", margin: 0, padding: "10px" }}>
-                              Edit
-                            </h3>
-                          </div>
+                            <FBModal
+                              prompt={
+                                <div
+                                  style={{
+                                    borderRadius: "10px",
+                                    backgroundColor: "#B9CCDA",
+                                    cursor: "pointer",
+                                    display: "inline",
+                                    marginRight: "5px",
+                                  }}
+                                >
+                                  <h3
+                                    style={{
+                                      display: "inline-block",
+                                      margin: 0,
+                                      padding: "10px",
+                                    }}
+                                  >
+                                    Edit
+                                  </h3>
+                                </div>
+                              }
+                              title="Edit card"
+                              buttons={[
+                                {
+                                  text: "Save",
+                                  submit: () =>
+                                    handleEdit(user._id, card._id, newCard),
+                                },
+                              ]}
+                              body={
+                                <center>
+                                  <FormControl
+                                    sx={{
+                                      width: "80%",
+                                      marginLeft: "auto",
+                                      marginRight: "auto",
+                                    }}
+                                  >
+                                    <h4
+                                      style={{
+                                        textAlign: "left",
+                                        marginTop: "10px",
+                                        marginBottom: "5px",
+                                      }}
+                                    >
+                                      Front side
+                                    </h4>
+                                    <Input
+                                      id="frontInput"
+                                      placeholder="Front..."
+                                      disableUnderline="true"
+                                      value={newCard.front}
+                                      sx={{
+                                        borderRadius: "5px",
+                                        paddingLeft: "10px",
+                                        backgroundColor: "#B9CCDA",
+                                        color: "#261420",
+                                      }}
+                                      onChange={(e) =>
+                                        setNewCard({
+                                          ...newCard,
+                                          front: e.target.value,
+                                        })
+                                      }
+                                    ></Input>
+                                  </FormControl>
+
+                                  <FormControl
+                                    sx={{
+                                      width: "80%",
+                                      marginLeft: "auto",
+                                      marginRight: "auto",
+                                      marginBottom: "-40px",
+                                    }}
+                                  >
+                                    <h4
+                                      style={{
+                                        textAlign: "left",
+                                        marginBottom: "5px",
+                                      }}
+                                    >
+                                      Back
+                                    </h4>
+                                    <Input
+                                      placeholder="Back..."
+                                      disableUnderline="true"
+                                      value={newCard.back}
+                                      sx={{
+                                        borderRadius: "5px",
+                                        paddingLeft: "10px",
+                                        backgroundColor: "#B9CCDA",
+                                        color: "#261420",
+                                      }}
+                                      onKeyPress={(e) =>
+                                        e.key == "Enter" &&
+                                        handleEdit(user._id, newCard)
+                                      }
+                                      onChange={(e) =>
+                                        setNewCard({
+                                          ...newCard,
+                                          back: e.target.value,
+                                        })
+                                      }
+                                    ></Input>
+                                  </FormControl>
+                                </center>
+                              }
+                            />
                           </center>
                         </td>
                       </tr>

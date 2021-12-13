@@ -134,78 +134,78 @@ export const FBCard = ({ title, body, buttons }) => {
     );
   };
 
-  const TripleButton = () => {
-    return (
-      <div
-        style={{
-          cursor: "pointer",
-          zIndex: 0,
-          padding: "0px",
-          margin: "0px",
-          marginLeft: "-0.2px",
-          width: "100.2%",
-          borderRadius: "0 0 6px 6px",
-          backgroundColor: "#B9CCDA",
-
-          position: "absolute",
-          bottom: 0,
-        }}
-      >
-
-
-<Grid container>
-        <Grid item xs="4" onClick={buttons[0].submit}>
-        <h2
+    const TripleButton = () => {
+      return (
+        <div
           style={{
-            display: "inline",
+            cursor: "pointer",
+            zIndex: 0,
             padding: "0px",
             margin: "0px",
-            textAlign: "center",
-            paddingLeft: "0px",
-            paddingBottom: "10px",
-            lineHeight: "55px"
+            marginLeft: "-0.2px",
+            width: "100.2%",
+            borderRadius: "0 0 6px 6px",
+            backgroundColor: "#B9CCDA",
+
+            position: "absolute",
+            bottom: 0,
           }}
         >
-          {buttons[0].text}
-        </h2>
-        </Grid>
 
-        <Grid item xs="4" onClick={buttons[1].submit} style={{borderRight: "2px solid darkgrey", borderLeft: "2px solid darkgrey"}}>
-        <h2
-          style={{
-            display: "inline",
-            padding: "0px",
-            margin: "0px",
-            textAlign: "center",
-            paddingLeft: "0px",
-            paddingBottom: "10px",
-            lineHeight: "55px"
-          }}
-        >
-          {buttons[1].text}
-        </h2>
-        </Grid>
 
-        <Grid item xs="4" onClick={buttons[1].submit}>
-        <h2
-          style={{
-            display: "inline",
-            padding: "0px",
-            margin: "0px",
-            textAlign: "center",
-            paddingLeft: "0px",
-            paddingBottom: "10px",
-            lineHeight: "55px"
-          }}
-        >
-          {buttons[2].text}
-        </h2>
-        </Grid>
-</Grid>     
+  <Grid container>
+          <Grid item xs="4" onClick={buttons[0].submit}>
+          <h2
+            style={{
+              display: "inline",
+              padding: "0px",
+              margin: "0px",
+              textAlign: "center",
+              paddingLeft: "0px",
+              paddingBottom: "10px",
+              lineHeight: "55px"
+            }}
+          >
+            {buttons[0].text}
+          </h2>
+          </Grid>
 
-      </div>
-    );
-  };
+          <Grid item xs="4" onClick={buttons[1].submit} style={{borderRight: "2px solid darkgrey", borderLeft: "2px solid darkgrey"}}>
+          <h2
+            style={{
+              display: "inline",
+              padding: "0px",
+              margin: "0px",
+              textAlign: "center",
+              paddingLeft: "0px",
+              paddingBottom: "10px",
+              lineHeight: "55px"
+            }}
+          >
+            {buttons[1].text}
+          </h2>
+          </Grid>
+
+          <Grid item xs="4" onClick={buttons[1].submit}>
+          <h2
+            style={{
+              display: "inline",
+              padding: "0px",
+              margin: "0px",
+              textAlign: "center",
+              paddingLeft: "0px",
+              paddingBottom: "10px",
+              lineHeight: "55px"
+            }}
+          >
+            {buttons[2].text}
+          </h2>
+          </Grid>
+  </Grid>     
+
+        </div>
+      );
+    };
 
 
 
