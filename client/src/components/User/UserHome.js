@@ -7,6 +7,7 @@ import { FBCard } from "../SubComponents/FBCard";
 import { UserIntro } from "./UserIntro";
 import { UserStats } from "./UserStats";
 
+import { updatePost } from "../../actions/posts";
 
 export const UserHome = () => {
   const location = useLocation()
@@ -33,6 +34,13 @@ export const UserHome = () => {
   }, [users, location, localUser]);
 
 
+
+    //reset streak
+    let today = new Date( new Date().setHours(0,0,0,1) )
+    if (user && user.last < new Date(today).setDate(new Date().getDate() - 1)) {
+      const newDate = { streak: 0, last: user.last };
+      dispatch(updatePost(user._id, newDate));
+    }
 
   return (
     <div>

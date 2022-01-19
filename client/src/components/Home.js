@@ -38,6 +38,10 @@ export const Home = () => {
     setUser(users.filter((user) => user.code == localUser?.code)[0]);
   }, [users, location, localUser]);
 
+
+
+
+
   const [loginForm, setLoginForm] = useState({ username: "", code: "" });
 
   const [createAcctForm, setCreateAcctForm] = useState({ name: "", code: randomWords(3).join("-") });

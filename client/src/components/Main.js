@@ -9,6 +9,12 @@ import { Study } from "./User/Study";
 import { UserStats } from "./User/UserStats";
 import { AllCards } from './User/AllCards';
 
+
+import { Games } from "./Games";
+import { Memory } from "./Games/Memory";
+import { Koala } from './Games/Koala'
+
+
 export const Main = () => {
   return (
     <div>
@@ -31,6 +37,17 @@ export const Main = () => {
             <AddCard />
           </Route>
 
+          <Route exact path="/games">
+            <Games />
+          </Route>
+
+          <Route exact path="/games/memory">
+            <Memory />
+          </Route>
+          
+          <Route exact path="/games/koala">
+            <Koala />
+          </Route>
           
           <Route exact path="/stats">
             <UserStats />

@@ -131,6 +131,17 @@ export const Header = () => {
             <MenuItem title="Add Cards" />
           </div>
 
+
+          <div
+            onClick={() => {
+              setOpen(false);
+              history.push("/games");
+            }}
+          >
+            <MenuItem title="Games" />
+          </div>
+
+
           <div
             onClick={() => {
               setOpen(false);

@@ -106,7 +106,7 @@ export const Memory = () => {
                 display: "inline-block",
                 width: "100px",
                 height: "180px",
-                backgroundColor: "pink",
+                backgroundColor: "rgb(185, 204, 218)",
                 margin: "5px",
               }}
               onClick={() =>
@@ -139,15 +139,16 @@ export const Memory = () => {
                   display: "flex",
                   width: "100%",
                   borderRadius: "5px",
-
+                  border: "5px solid rgb(185, 204, 218)",
+                  boxSizing: "border-box",
                   backgroundColor: correct.includes(word.Q)
-                    ? "lightblue"
-                    : "pink",
+                    ? "white"
+                    : "rgb(185, 204, 218)",
                   justifyContent: "center",
                   alignItems: "center",
                 }}
               >
-                <span style={{ userSelect: "none" }}>{word.Q}</span>
+                <h3 style={{ userSelect: "none" }}>{word.Q}</h3>
               </div>
 
               {/*
