@@ -13,6 +13,8 @@ export const Main = () => {
   return (
     <div>
       <BrowserRouter>
+
+
       <Header />
         <Switch>
           <Route exact path="/">

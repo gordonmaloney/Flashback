@@ -76,7 +76,7 @@ export const Home = () => {
       <br />
       <br />
       <center>
-        {!user ? (
+        
           <>
             <FBCard
               title="Log in"
@@ -207,9 +207,7 @@ export const Home = () => {
               }
             />
           </>
-        ) : (
-          submitBtn()
-        )}
+        
       </center>
     </div>
   );

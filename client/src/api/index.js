@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-const API = axios.create({baseURL: 'http://localhost:5000' });
-//const API = axios.create({baseURL: 'https://flashcardsgm.herokuapp.com' });
+//const API = axios.create({baseURL: 'http://localhost:5000' });
+const API = axios.create({baseURL: 'https://flashbackflashcards.herokuapp.com' });
 
 export const fetchPosts = () => API.get('/posts');
 export const createPost = (newPost) => API.post('/posts', newPost)
