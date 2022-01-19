@@ -2,28 +2,71 @@ import React, { useState } from "react";
 
 import { WORDS as ImportedWords } from "./WORDS";
 
+const WORDS = [
+  {
+    l1: "tired",
+    l2: "sgìth",
+  },
+  {
+    l1: "big",
+    l2: "mòr",
+  },
+  {
+    l1: "small",
+    l2: "beag",
+  },
+  {
+    l1: "dog",
+    l2: "cù",
+  },
+  {
+    l1: "horse",
+    l2: "each",
+  },
+  {
+    l1: "house",
+    l2: "taigh",
+  },
+];
+
+let shuffledWords = [];
+
+WORDS.map((word) => {
+  let newWord = { Q: word.l1, A: word.l2 };
+  let newWord2 = { Q: word.l2, A: word.l1 };
+  shuffledWords.push(newWord);
+  shuffledWords.push(newWord2);
+});
+
+function shuffleArray(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+}
+
+{
+  shuffleArray(shuffledWords);
+}
+
 export const Memory = () => {
+  console.log(ImportedWords().shuffledWords)
 
-  //import words from function
-  const ImportedArray = ImportedWords().shuffledWords
-
-  //create state variables for the first and second card a user pics
+  
   const [selectL1, setSelectL1] = useState("");
   const [selectL2, setSelectL2] = useState("");
 
-  //create state variables for whether to display a card or not and whether or not it was correct
   const [show, setShow] = useState([]);
   const [correct, setCorrect] = useState([]);
 
-  //variable to make cards unclickable while they're spinning over
   const [clickable, setClickable] = useState(true);
 
-
-  //if user has picked two cards, check if they match and either set them to correct or turn them back over
   if (selectL1 && selectL2) {
+    console.log(selectL1, selectL2);
+
     clickable == true && setClickable(false);
 
-    let selectQ = ImportedArray.filter((word) => word.Q == selectL1)[0];
+    let selectQ = shuffledWords.filter((word) => word.Q == selectL1)[0];
 
     console.log("selectQ: ", selectQ);
 
@@ -41,11 +84,11 @@ export const Memory = () => {
   }
 
 
-  //show the card a user's clicked
   const selectCard = (wordId) => {
     !selectL1 ? setSelectL1(wordId) : setSelectL2(wordId);
 
     show.push(wordId);
+    console.log("show: ", show);
   };
 
 
@@ -55,9 +98,7 @@ export const Memory = () => {
       <div
         style={{ perspective: "2000px", pointerEvents: !clickable && "none" }}
       >
-
-      {/* filter through the imported array and display them */}
-        {ImportedArray.map((word) => {
+        {shuffledWords.map((word) => {
           return (
             <div
               className={

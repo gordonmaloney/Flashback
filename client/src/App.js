@@ -8,11 +8,14 @@ import reducers from "./reducers/CombineReducers";
 const store = createStore(reducers, compose(applyMiddleware(thunk)));
 
 function App() {
+
+
   return (
     <Provider store={store}>
       
-      <Main />
 
+      
+      <Main />
 
       {/*
       <Main />
