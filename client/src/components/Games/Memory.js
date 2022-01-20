@@ -1,11 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
 
-import { WORDS as ImportedWords } from "./WORDS";
+import { useWords } from "./WORDS";
 
 export const Memory = () => {
-
   //import words from function
-  const ImportedArray = ImportedWords().shuffledWords
+  const ImportedWords = useWords();
+  const ImportedArray = useMemo(() => ImportedWords.shuffledWords, [ImportedWords.shuffledWords.length]);
+
+
 
   //create state variables for the first and second card a user pics
   const [selectL1, setSelectL1] = useState("");
@@ -17,7 +19,6 @@ export const Memory = () => {
 
   //variable to make cards unclickable while they're spinning over
   const [clickable, setClickable] = useState(true);
-
 
   //if user has picked two cards, check if they match and either set them to correct or turn them back over
   if (selectL1 && selectL2) {
@@ -40,7 +41,6 @@ export const Memory = () => {
     }, 800);
   }
 
-
   //show the card a user's clicked
   const selectCard = (wordId) => {
     !selectL1 ? setSelectL1(wordId) : setSelectL2(wordId);
@@ -48,15 +48,12 @@ export const Memory = () => {
     show.push(wordId);
   };
 
-
-  
   return (
     <div className="memory-game-wrapper">
       <div
         style={{ perspective: "2000px", pointerEvents: !clickable && "none" }}
       >
-
-      {/* filter through the imported array and display them */}
+        {/* filter through the imported array and display them */}
         {ImportedArray.map((word) => {
           return (
             <div
