@@ -7,8 +7,6 @@ export const Memory = () => {
   const ImportedWords = useWords();
   const ImportedArray = useMemo(() => ImportedWords.shuffledWords, [ImportedWords.shuffledWords.length]);
 
-
-
   //create state variables for the first and second card a user pics
   const [selectL1, setSelectL1] = useState("");
   const [selectL2, setSelectL2] = useState("");

@@ -56,16 +56,20 @@ export const Study = () => {
 
   const handlePrev = () => {
     if (index == 0) {
+      setAnswer(false)
       setIndex(userCards.length - 1);
     } else {
+      setAnswer(false)
       setIndex(index - 1);
     }
   };
 
   const handleNext = () => {
     if (index == userCards.length - 1) {
+      setAnswer(false)
       setIndex(0);
     } else {
+      setAnswer(false)
       setIndex(index + 1);
     }
   };
@@ -75,12 +79,6 @@ export const Study = () => {
   const handleUpdate = (id, commentId, updatedPost) => {
 
     let today = new Date( new Date().setHours(0,0,0,1) )
-
-    console.log("last", user.last)
-
-    console.log("-1", new Date(today).setDate(new Date().getDate() - 1))
-
-    console.log(user.last == new Date(today).setDate(new Date().getDate() - 1))
 
     dispatch(updateComment(id, commentId, updatedPost));
 
@@ -183,7 +181,7 @@ export const Study = () => {
               { text: "Wrong", submit: () => handleWrong(CARD) },
               { text: "Correct", submit: () => handleCorrect(CARD) },
               { text: "Easy", submit: () => handleEasy(CARD) },
-              { text: "Show answer", submit: () => setAnswer(!answer) },
+              { text: answer ? "Hide answer" : "Show answer", submit: () => setAnswer(!answer) },
             ]}
             title="Studying"
             body={
