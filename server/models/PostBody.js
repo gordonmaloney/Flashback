@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 const postSchema = mongoose.Schema({
   name: String,
-  teacher: Boolean,
+  teacher: { type: Boolean, default: false },
   streak: { type: Number, default: 0 },
   code: String,
   last: { type: Number, default: 0 },
